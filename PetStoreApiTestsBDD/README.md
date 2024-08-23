@@ -97,8 +97,29 @@ This project includes step definitions for various scenarios, such as:
 
 - **Tests not running**: Ensure that the `specflow.json` configuration is correct, and that the necessary plugins (`SpecFlow.Tools.MsBuild.Generation`, `SpecFlow.NUnit`, etc.) are installed.
 - **Tests not discovered**: Ensure that the SpecFlow and NUnit packages are correctly installed and the project is rebuilt. Restart Visual Studio if necessary.
-- **Report not generated**: Check that the `specflow.json` file has `"enabled": true` for reporting and that the output path is correctly specified.
 - **Missing Step Definitions**: Ensure that the step definitions are implemented and linked to the corresponding feature files. Rebuild the solution if necessary.
+
+### Step 1: Install LivingDoc CLI
+
+Run the following command to install the LivingDoc CLI globally on your machine:
+
+```bash
+dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+```
+
+### Step 2: Generate Living Documentation
+
+Once the tests have been executed, you can generate the living documentation using the following command:
+
+```bash
+livingdoc test-assembly "Path\PetStoreApiTestsBDD.dll" -t "Path\TestExecution.json"
+```
+
+- Replace the paths with the appropriate paths to your `.dll` and `TestExecution.json` files.
+
+### Viewing the Living Documentation
+
+- After generating the documentation, open the `LivingDoc.html` file in your web browser to view the living documentation generated from your SpecFlow scenarios.
 
 ## Additional Notes
 
