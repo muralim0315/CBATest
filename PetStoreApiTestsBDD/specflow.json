@@ -29,6 +29,7 @@
   "report": {
     "enabled": true,
     "formats": [ "html" ],
-    "outputPath": "C:\\Users\\mural\\Downloads\\PetStoreApiTestsBDD_Updated\\Reports"
+    "outputPath": "TestResults/"
+
   }
 }
