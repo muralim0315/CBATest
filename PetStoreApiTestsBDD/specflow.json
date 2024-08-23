@@ -1,0 +1,34 @@
+
+{
+  "specflow": {
+    "stepAssemblies": [
+      {
+        "assembly": "PetStoreApiTests"
+      }
+    ],
+    "bindingCulture": {
+      "name": "en-US"
+    },
+    "plugins": [
+      {
+        "name": "SpecFlow.Tools.MsBuild.Generation",
+        "parameters": {
+          "useProjectSpecificOutputPath": "false"
+        }
+      },
+      {
+        "name": "SpecFlow.NUnit",
+        "type": "Runtime"
+      },
+      {
+        "name": "SpecFlow.ReportGenerator",
+        "type": "Generator"
+      }
+    ]
+  },
+  "report": {
+    "enabled": true,
+    "formats": [ "html" ],
+    "outputPath": "C:\\Users\\mural\\Downloads\\PetStoreApiTestsBDD_Updated\\Reports"
+  }
+}
