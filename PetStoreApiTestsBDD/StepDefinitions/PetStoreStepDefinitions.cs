@@ -3,27 +3,21 @@ using RestSharp;
 using TechTalk.SpecFlow;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using PetStoreApiTests.Hooks;
 
 namespace PetStoreApiTests.StepDefinitions
 {
     [Binding]
     public class PetStoreStepDefinitions
     {
-        private readonly IConfiguration _configuration;
         private readonly RestClient _client;
         private RestRequest _request;
         private RestResponse _response;
 
         public PetStoreStepDefinitions()
         {
-            // Load the configuration from appsettings.json
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-            _configuration = builder.Build();
-
-            // Get the BaseUrl from the configuration
-            string baseUrl = _configuration.GetSection("ApiSettings:BaseUrl").Value;
+            // Get the BaseUrl from the configuration initialized in the TestHooks class
+            string baseUrl = TestHooks.Configuration.GetSection("ApiSettings:BaseUrl").Value;
             _client = new RestClient(baseUrl);
         }
 
