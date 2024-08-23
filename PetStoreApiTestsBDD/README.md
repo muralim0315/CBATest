@@ -48,28 +48,8 @@ This project contains automated tests for the PetStore API, implemented using BD
       ```
    4. **View Test Results**: The test results will be displayed in the terminal.
 
-## SpecFlow Reporting
 
-SpecFlow will automatically generate an HTML report after the tests are executed.
 
-### Report Location
-
-- By default, the report is generated in the `TestResults/` directory of the project root.
-- If the report is not generated, you can manually set the output path in `specflow.json` like this:
-  ```json
-  {
-    "report": {
-      "enabled": true,
-      "formats": ["html"],
-      "outputPath": "TestResults/"
-    }
-  }
-  ```
-
-### Viewing the Report
-
-1. After running the tests, navigate to the `TestResults/` folder in the project directory.
-2. Open the `TestExecutionReport.html` file in your web browser to view the test results.
 
 ## Project Structure
 
@@ -98,6 +78,8 @@ This project includes step definitions for various scenarios, such as:
 - **Tests not running**: Ensure that the `specflow.json` configuration is correct, and that the necessary plugins (`SpecFlow.Tools.MsBuild.Generation`, `SpecFlow.NUnit`, etc.) are installed.
 - **Tests not discovered**: Ensure that the SpecFlow and NUnit packages are correctly installed and the project is rebuilt. Restart Visual Studio if necessary.
 - **Missing Step Definitions**: Ensure that the step definitions are implemented and linked to the corresponding feature files. Rebuild the solution if necessary.
+
+## SpecFlow Reporting
 
 ### Step 1: Install LivingDoc CLI
 
