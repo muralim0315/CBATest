@@ -1,0 +1,44 @@
+name: .NET Core CI
+
+on:
+  push:
+    branches:
+      - Murali-CBATest
+  pull_request:
+    branches:
+      - Murali-CBATest
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build the project
+      run: dotnet build --no-restore
+
+    - name: Run tests
+      run: dotnet test --no-build --logger "trx;LogFileName=test_results.trx"
+
+    - name: Install SpecFlow.Plus.LivingDoc.CLI
+      run: dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+
+    - name: Generate Living Documentation
+      run: |
+        livingdoc test-assembly "PetStoreApiTestsBDD/bin/Debug/net6.0/PetStoreApiTestsBDD.dll" -t "PetStoreApiTestsBDD/bin/Debug/net6.0/TestExecution.json"
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: PetStoreApiTestsBDD/bin/Debug/net6.0/LivingDoc.html
