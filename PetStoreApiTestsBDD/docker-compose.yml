@@ -1,0 +1,7 @@
+version: '3'
+services:
+  api-tests:
+    build: .
+    container_name: api-csharp-tests
+    volumes:
+      - .:/app
